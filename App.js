@@ -12,12 +12,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       endLoading: false,
-      data: {}
+      data: {},
+      "fede": 0,
+      "gaid" : 0
     }
   }
 
   loadData = async () => {
-    await axios.get('http://localhost:3000/matches')
+    await axios.get('https://totoeuro-api.herokuapp.com/matches')
     .then((response) => {
       this.setState({ data : response.data});
       console.log(this.state.data);
@@ -26,6 +28,23 @@ export default class App extends React.Component {
     .catch((err) => {
         console.log(err);
     }) 
+  }
+
+  calcColor = (match, player, matchString) => {
+    var home = match.score.homeTeam;
+    var away = match.score.awayTeam;
+    var homeGuess = players.players[player][matchString].home;
+    var awayGuess = players.players[player][matchString].away;
+    if (match.status === "SCHEDULED")
+      return "#212121"
+    if (home === homeGuess && away === awayGuess) {
+      return "#3b570f"
+    }
+    if ((home-away > 0 && homeGuess-awayGuess > 0) || (home-away === 0 && homeGuess-awayGuess === 0) || (home-away < 0 && homeGuess-awayGuess < 0))
+    {
+      return "#0000ff"
+    }
+    return "#ff0000"
   }
 
   async componentDidMount() {
@@ -60,11 +79,31 @@ export default class App extends React.Component {
             }
           </View>
           <Text style={{fontSize: 5*vw}}>Pronostici</Text>
-          <View>
-            <View>
+          <View style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <View style={{
+              backgroundColor: this.calcColor(match, "fede", matchString),
+              width: "90%",
+              borderRadius: 20
+            }}>
               <Text style={{
-                fontSize: 4.5*vw
+                fontSize: 4.5*vw,
+                color: 'white'
               }}>Fede: {players.players.fede[matchString].home + "-" + players.players.fede[matchString].away}</Text>
+            </View>
+            <View style={{
+              backgroundColor: this.calcColor(match, "gaid", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 4
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Gaid {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
             </View>
           </View>
         </View>
@@ -120,13 +159,15 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   matchBox: {
-    width: 80 * vw,
+    width: 80*vw,
     backgroundColor: '#fff',
     alignItems: 'center',
     padding: 10,
     margin: 15,
     justifyContent: 'flex-start',
-    borderRadius: 5
+    borderRadius: 5,
+    justifyContent: 'center',
+    textAlign: 'center'
   },
   result: {
     fontSize: 7*vw,
