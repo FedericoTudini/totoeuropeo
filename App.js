@@ -13,8 +13,8 @@ export default class App extends React.Component {
     this.state = {
       endLoading: false,
       data: {},
-      "fede": 0,
-      "gaid" : 0
+      fede: 0,
+      gaid: 0
     }
   }
 
@@ -36,7 +36,7 @@ export default class App extends React.Component {
     var homeGuess = players.players[player][matchString].home;
     var awayGuess = players.players[player][matchString].away;
     if (match.status === "SCHEDULED")
-      return "#212121"
+      return "#121212"
     if (home === homeGuess && away === awayGuess) {
       return "#3b570f"
     }
@@ -49,6 +49,7 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await this.loadData();
+    //this.calcPoints()
     this.setState({endLoading: true});
   }
 
@@ -60,8 +61,6 @@ export default class App extends React.Component {
     {
       var temp = match.homeTeam.name + "-" + match.awayTeam.name
       var matchString = temp.replace(/\s/g, '')
-      console.log(matchString)
-      console.log(players)
       return (
         <View key={match.homeTeam.name + " " + match.awayTeam.name} style={styles.matchBox}>
           <View>
@@ -87,7 +86,8 @@ export default class App extends React.Component {
             <View style={{
               backgroundColor: this.calcColor(match, "fede", matchString),
               width: "90%",
-              borderRadius: 20
+              borderRadius: 20,
+              margin: 3
             }}>
               <Text style={{
                 fontSize: 4.5*vw,
@@ -98,18 +98,71 @@ export default class App extends React.Component {
               backgroundColor: this.calcColor(match, "gaid", matchString),
               width: "90%",
               borderRadius: 20,
-              margin: 4
+              margin: 3
             }}>
               <Text style={{
                 fontSize: 4.5*vw,
                 color: 'white'
-              }}>Gaid {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
+              }}>Gaid: {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
+            </View>
+            <View style={{
+              backgroundColor: this.calcColor(match, "cataldo", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 3
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Cataldo: {players.players.cataldo[matchString].home + "-" + players.players.cataldo[matchString].away}</Text>
             </View>
           </View>
         </View>
       )
     })
   }
+
+  calcPoints = () => {
+    this.state.data.matches.filter((match) => 
+    {
+      return match.stage === "GROUP_STAGE"; 
+    }).map((match) => {
+      for (var key in players) {
+        var temp = match.homeTeam.name + "-" + match.awayTeam.name
+        var matchString = temp.replace(/\s/g, '')
+        var home = match.score.homeTeam;
+        var away = match.score.awayTeam;
+        var homeGuess = players.players[matchString].home; // TODO: fix undefined on home
+        var awayGuess = players.players[matchString].away;
+        if (home === homeGuess && away === awayGuess) {
+          var tmp = this.state[key]
+          this.setState({key: tmp})
+        }
+        if ((home-away > 0 && homeGuess-awayGuess > 0) || (home-away === 0 && homeGuess-awayGuess === 0) || (home-away < 0 && homeGuess-awayGuess < 0))
+          var tmp = this.state[key]
+          this.setState({key: tmp})
+      }
+    })
+    console.log(this.state)
+  }
+
+  /*
+      var matchString = temp.replace(/\s/g, '')
+      var home = match.score.homeTeam;
+      var away = match.score.awayTeam;
+      var homeGuess = plr[matchString].home;
+      var awayGuess = plr[matchString].away;
+      if (match.status === "SCHEDULED")
+      console.log("Da Giocare")
+      if (home === homeGuess && away === awayGuess) {
+        console.log("Risultato esatto")
+      }
+      if ((home-away > 0 && homeGuess-awayGuess > 0) || (home-away === 0 && homeGuess-awayGuess === 0) || (home-away < 0 && homeGuess-awayGuess < 0))
+      {
+        console.log("Pronostico preso")
+      }
+      console.log("Nessun punto")
+      } */
 
   render() {
     if (!this.state.endLoading)
