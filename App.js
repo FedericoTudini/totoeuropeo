@@ -81,21 +81,91 @@ export default class App extends React.Component {
           <View style={{
             width: '100%',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            flexDirection: 'row'
           }}>
-            <View style={{
-              backgroundColor: this.calcColor(match, "fede", matchString),
-              width: "90%",
-              borderRadius: 20,
-              margin: 3
-            }}>
-              <Text style={{
-                fontSize: 4.5*vw,
-                color: 'white'
-              }}>Fede: {players.players.fede[matchString].home + "-" + players.players.fede[matchString].away}</Text>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <View style={{
+                backgroundColor: this.calcColor(match, "fede", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Fede: {players.players.fede[matchString].home + "-" + players.players.fede[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "gaid", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Gaid: {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "cataldo", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Cataldo: {players.players.cataldo[matchString].home + "-" + players.players.cataldo[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "lollo", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Lollo: {players.players.lollo[matchString].home + "-" + players.players.lollo[matchString].away}</Text>
+              </View>
             </View>
-            <View style={{
-              backgroundColor: this.calcColor(match, "gaid", matchString),
+            <View style={{flex:1, alignItems: 'center'}}>
+              <View style={{
+                backgroundColor: this.calcColor(match, "nicola", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Nicola: {players.players.nicola[matchString].home + "-" + players.players.nicola[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "fra", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Fra: {players.players.fra[matchString].home + "-" + players.players.fra[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "marco", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Maerco: {players.players.marco[matchString].home + "-" + players.players.marco[matchString].away}</Text>
+              </View>
+              <View style={{
+              backgroundColor: this.calcColor(match, "donghino", matchString),
               width: "90%",
               borderRadius: 20,
               margin: 3
@@ -103,29 +173,8 @@ export default class App extends React.Component {
               <Text style={{
                 fontSize: 4.5*vw,
                 color: 'white'
-              }}>Gaid: {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
+              }}>Donghue: {players.players.donghino[matchString].home + "-" + players.players.donghino[matchString].away}</Text>
             </View>
-            <View style={{
-              backgroundColor: this.calcColor(match, "cataldo", matchString),
-              width: "90%",
-              borderRadius: 20,
-              margin: 3
-            }}>
-              <Text style={{
-                fontSize: 4.5*vw,
-                color: 'white'
-              }}>Cataldo: {players.players.cataldo[matchString].home + "-" + players.players.cataldo[matchString].away}</Text>
-            </View>
-            <View style={{
-              backgroundColor: this.calcColor(match, "lollo", matchString),
-              width: "90%",
-              borderRadius: 20,
-              margin: 3
-            }}>
-              <Text style={{
-                fontSize: 4.5*vw,
-                color: 'white'
-              }}>Lollo: {players.players.lollo[matchString].home + "-" + players.players.lollo[matchString].away}</Text>
             </View>
           </View>
         </View>
