@@ -14,7 +14,13 @@ export default class App extends React.Component {
       endLoading: false,
       data: {},
       fede: 0,
-      gaid: 0
+      gaid: 0,
+      cataldo: 0,
+      nicola: 0,
+      lollo: 0,
+      marine: 0,
+      donghino: 0,
+      marco: 0
     }
   }
 
@@ -51,6 +57,7 @@ export default class App extends React.Component {
     await this.loadData();
     //this.calcPoints()
     this.setState({endLoading: true});
+    console.log(this.state)
   }
 
   renderMatches = () => {
@@ -185,6 +192,17 @@ export default class App extends React.Component {
                 fontSize: 4.5*vw,
                 color: 'white'
               }}>Dongue: {players.players.donghino[matchString].home + "-" + players.players.donghino[matchString].away}</Text>
+            </View>
+            <View style={{
+              backgroundColor: this.calcColor(match, "sgaro", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 3
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Sgaro: {players.players.sgaro[matchString].home + "-" + players.players.sgaro[matchString].away}</Text>
             </View>
             </View>
           </View>
