@@ -116,6 +116,17 @@ export default class App extends React.Component {
                 color: 'white'
               }}>Cataldo: {players.players.cataldo[matchString].home + "-" + players.players.cataldo[matchString].away}</Text>
             </View>
+            <View style={{
+              backgroundColor: this.calcColor(match, "lollo", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 3
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Lollo: {players.players.lollo[matchString].home + "-" + players.players.lollo[matchString].away}</Text>
+            </View>
           </View>
         </View>
       )
