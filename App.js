@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 import axios from 'axios';
 const players = require('./players');
 
@@ -13,14 +13,6 @@ export default class App extends React.Component {
     this.state = {
       endLoading: false,
       data: {},
-      fede: 0,
-      gaid: 0,
-      cataldo: 0,
-      nicola: 0,
-      lollo: 0,
-      marine: 0,
-      donghino: 0,
-      marco: 0
     }
   }
 
@@ -60,6 +52,70 @@ export default class App extends React.Component {
     console.log(this.state)
   }
 
+  renderTable = () => {
+    var listPlayers= [
+      {"fede": 0},
+      {"gaid":0},
+      {"cataldo":0},
+      {"nicola":0},
+      {"lollo":0},
+      {"marine":0},
+      {"donghino":0},
+      {"marco":0},
+      {"sgaro":0},
+      {"fra":0},
+    ]
+    this.state.data.matches.filter((match) => 
+    {
+      return match.stage === "GROUP_STAGE"; 
+    }).map((match) => 
+    {
+      listPlayers.map((obj) => {
+        var temp = match.homeTeam.name + "-" + match.awayTeam.name
+        var matchString = temp.replace(/\s/g, '')
+        var player = Object.keys(obj)[0];
+        var home = match.score.homeTeam;
+        var away = match.score.awayTeam;
+        var homeGuess = players.players[player][matchString].home;
+        var awayGuess = players.players[player][matchString].away;
+        if (match.status === "SCHEDULED")
+          return 
+        if (home === homeGuess && away === awayGuess) {
+          obj[player] += 7
+          return
+        }
+        if ((home-away > 0 && homeGuess-awayGuess > 0) || (home-away === 0 && homeGuess-awayGuess === 0) || (home-away < 0 && homeGuess-awayGuess < 0))
+        {
+          obj[player] += 2
+        }
+        return
+      })
+    })
+    return listPlayers.sort(function(a,b) {
+      return b[Object.keys(b)[0]] - a[Object.keys(a)[0]]
+    })
+    .map((pos) => {
+      return (
+      <View key={Object.keys(pos)[0]} style={{
+        marginBottom: 3,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(0,0,0,0.6)',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%'
+      }}>
+        <Text style={{
+          fontSize: 4*vw,
+          fontWeight: '600'
+        }}>{Object.keys(pos)[0].charAt(0).toUpperCase() + Object.keys(pos)[0].slice(1)}</Text>
+        <Text style={{
+          fontSize: 4*vw,
+          fontWeight: '600'
+        }}>{pos[Object.keys(pos)[0]]}</Text>
+      </View>)
+    })
+  }
+
   renderMatches = () => {
     return this.state.data.matches.filter((match) => 
     {
@@ -68,14 +124,28 @@ export default class App extends React.Component {
     {
       var temp = match.homeTeam.name + "-" + match.awayTeam.name
       var matchString = temp.replace(/\s/g, '')
+      var hour = parseInt(match.startDateTime.toString().substring(11,13)) + 2
       return (
         <View key={match.homeTeam.name + " " + match.awayTeam.name} style={styles.matchBox}>
           <View>
             <Text>{match.status}</Text>
           </View>
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '90%',
+            marginBottom: 3
+          }}>
+            <Text style={{
+              fontSize: 4*vw
+            }}>{match.startDateTime.toString().substring(0,10)}</Text>
+            <Text style={{
+              fontSize: 4*vw
+            }}>{hour}:00</Text>
+          </View>
           <View>
             <Text numberOfLines={1} style={{
-              fontSize: 6*vw
+              fontSize: 5.6*vw
             }}>{match.homeTeam.name} - {match.awayTeam.name}</Text>
           </View>
           <View>
@@ -273,8 +343,16 @@ export default class App extends React.Component {
             <Text style={{
               fontSize: 6.5*vw,
               fontWeight: '900',
+              color: 'white',
               fontStyle: 'italic'
-            }}>TotoApp</Text>
+            }}>TotoApp 2.0</Text>
+          </View>
+          <View style={styles.matchBox}>
+            <Text style={{
+              fontSize: 6*vw,
+              fontWeight: 'bold'
+            }}>Classifica</Text>
+            {this.renderTable()}
           </View>
           {this.renderMatches()}
         </View>
@@ -286,7 +364,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#6e0700',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: "column",
@@ -294,11 +372,20 @@ const styles = StyleSheet.create({
   topbar: {
     height: 10*vh,
     width: 100*vw,
-    backgroundColor: "#fff",
+    backgroundColor: "#196f0c",
     top: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    
+    elevation: 10,
   },
   matchBox: {
     width: 80*vw,
@@ -307,12 +394,21 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 15,
     justifyContent: 'flex-start',
-    borderRadius: 5,
+    borderRadius: 10,
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    
+    elevation: 10,
   },
   result: {
-    fontSize: 7*vw,
+    fontSize: 9*vw,
     fontWeight: 'bold'
   },
 });
