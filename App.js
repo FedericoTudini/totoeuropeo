@@ -129,6 +129,17 @@ export default class App extends React.Component {
                   color: 'white'
                 }}>Lollo: {players.players.lollo[matchString].home + "-" + players.players.lollo[matchString].away}</Text>
               </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "marine", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Marine: {players.players.marine[matchString].home + "-" + players.players.marine[matchString].away}</Text>
+              </View>
             </View>
             <View style={{flex:1, alignItems: 'center'}}>
               <View style={{
@@ -173,7 +184,7 @@ export default class App extends React.Component {
               <Text style={{
                 fontSize: 4.5*vw,
                 color: 'white'
-              }}>Donghue: {players.players.donghino[matchString].home + "-" + players.players.donghino[matchString].away}</Text>
+              }}>Dongue: {players.players.donghino[matchString].home + "-" + players.players.donghino[matchString].away}</Text>
             </View>
             </View>
           </View>

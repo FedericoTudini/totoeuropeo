@@ -1167,6 +1167,152 @@ const players =
         "home": 1,
         "away": 2
       }
+    },
+    "marine": {
+      "Turkey-Italy": {
+        "home": 0,
+        "away": 2
+      },
+      "Wales-Switzerland": {
+        "home": 2,
+        "away": 1
+      },
+      "Denmark-Finland": {
+        "home": 0,
+        "away": 0
+      },
+      "Belgium-Russia": {
+        "home": 3,
+        "away": 1
+      },
+      "England-Croatia": {
+        "home": 1,
+        "away": 1
+      },
+      "Austria-NorthMacedonia": {
+        "home": 2,
+        "away": 0
+      },
+      "Netherlands-Ukraine": {
+        "home": 2,
+        "away": 2
+      },
+      "Scotland-CzechRepublic": {
+        "home": 0,
+        "away": 1
+      },
+      "Poland-Slovakia": {
+        "home": 2,
+        "away": 0
+      },
+      "Spain-Sweden": {
+        "home": 2,
+        "away": 1
+      },
+      "Hungary-Portugal": {
+        "home": 1,
+        "away": 3
+      },
+      "France-Germany": {
+        "home": 2,
+        "away": 1
+      },
+      "Finland-Russia": {
+        "home": 1,
+        "away": 1
+      },
+      "Turkey-Wales": {
+        "home": 1,
+        "away": 1
+      },
+      "Italy-Switzerland": {
+        "home": 2,
+        "away": 1
+      },
+      "Ukraine-NorthMacedonia": {
+        "home": 2,
+        "away": 0
+      },
+      "Denmark-Belgium": {
+        "home": 0,
+        "away": 4
+      },
+      "Netherlands-Austria": {
+        "home": 1,
+        "away": 1
+      },
+      "Sweden-Slovakia": {
+        "home": 0,
+        "away": 0
+      },
+      "Croatia-CzechRepublic": {
+        "home": 2,
+        "away": 0
+      },
+      "England-Scotland": {
+        "home": 3,
+        "away": 1
+      },
+      "Hungary-France": {
+        "home": 1,
+        "away": 2
+      },
+      "Portugal-Germany": {
+        "home": 0,
+        "away": 1
+      },
+      "Spain-Poland": {
+        "home": 0,
+        "away": 1
+      },
+      "Italy-Wales": {
+        "home": 2,
+        "away": 1
+      },
+      "Switzerland-Turkey": {
+        "home": 2,
+        "away": 0
+      },
+      "NorthMacedonia-Netherlands": {
+        "home": 0,
+        "away": 3
+      },
+      "Ukraine-Austria": {
+        "home": 2,
+        "away": 0
+      },
+      "Russia-Denmark": {
+        "home": 2,
+        "away": 2
+      },
+      "Finland-Belgium": {
+        "home": 0,
+        "away": 2
+      },
+      "Croatia-Scotland": {
+        "home": 2,
+        "away": 0
+      },
+      "CzechRepublic-England": {
+        "home": 1,
+        "away": 3
+      },
+      "Slovakia-Spain": {
+        "home": 0,
+        "away": 2
+      },
+      "Sweden-Poland": {
+        "home": 1,
+        "away": 1
+      },
+      "Germany-Hungary": {
+        "home": 3,
+        "away": 0
+      },
+      "Portugal-France": {
+        "home": 2,
+        "away": 1
+      }
     }
   }
 
