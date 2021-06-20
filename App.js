@@ -120,6 +120,8 @@ export default class App extends React.Component {
     return this.state.data.matches.filter((match) => 
     {
       return match.stage === "GROUP_STAGE"; 
+    }).sort((m1, m2) => {
+      return m1.status - m2.status
     }).map((match) => 
     {
       var temp = match.homeTeam.name + "-" + match.awayTeam.name
