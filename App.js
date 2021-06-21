@@ -17,7 +17,7 @@ export default class App extends React.Component {
   }
 
   loadData = async () => {
-    await axios.get('https://totoeuro-api.herokuapp.com/matches')
+    await axios.get('https://blooming-lowlands-15801.herokuapp.com/matches')
     .then((response) => {
       this.setState({ data : response.data});
       console.log(this.state.data);
@@ -116,12 +116,179 @@ export default class App extends React.Component {
     })
   }
 
+  renderInPlay = () => {
+    return this.state.data.matches.filter((match) => 
+    {
+      return match.stage === "GROUP_STAGE"  && (match.status === "IN_PLAY" || match.status === "PAUSED"); 
+    }).sort((m1, m2) => {
+      return m1.homeTeam.name - m2.homeTeam.name
+    }).map((match) => 
+    {
+      var temp = match.homeTeam.name + "-" + match.awayTeam.name
+      var matchString = temp.replace(/\s/g, '')
+      var hour = parseInt(match.startDateTime.toString().substring(11,13)) + 2
+      return (
+        <View key={match.homeTeam.name + " " + match.awayTeam.name} style={styles.matchBoxInPlay}>
+          <View>
+            <Text>{match.status}</Text>
+          </View>
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '90%',
+            marginBottom: 3
+          }}>
+            <Text style={{
+              fontSize: 4*vw
+            }}>{match.startDateTime.toString().substring(0,10)}</Text>
+            <Text style={{
+              fontSize: 4*vw
+            }}>{hour}:00</Text>
+          </View>
+          <View>
+            <Text numberOfLines={1} style={{
+              fontSize: 5.6*vw
+            }}>{match.homeTeam.name} - {match.awayTeam.name}</Text>
+          </View>
+          <View>
+            {match.score.homeTeam != null ? 
+              <Text style={styles.result}>{match.score.homeTeam + " - " +  match.score.awayTeam}</Text> :
+              <Text style={styles.result}>0 - 0</Text>
+            }
+          </View>
+          <Text style={{fontSize: 5*vw}}>Pronostici</Text>
+          <View style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row'
+          }}>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <View style={{
+                backgroundColor: this.calcColor(match, "fede", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Fede: {players.players.fede[matchString].home + "-" + players.players.fede[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "gaid", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Gaid: {players.players.gaid[matchString].home + "-" + players.players.gaid[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "cataldo", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Cataldo: {players.players.cataldo[matchString].home + "-" + players.players.cataldo[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "lollo", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Lollo: {players.players.lollo[matchString].home + "-" + players.players.lollo[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "marine", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Marine: {players.players.marine[matchString].home + "-" + players.players.marine[matchString].away}</Text>
+              </View>
+            </View>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <View style={{
+                backgroundColor: this.calcColor(match, "nicola", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Nicola: {players.players.nicola[matchString].home + "-" + players.players.nicola[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "fra", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Fra: {players.players.fra[matchString].home + "-" + players.players.fra[matchString].away}</Text>
+              </View>
+              <View style={{
+                backgroundColor: this.calcColor(match, "marco", matchString),
+                width: "90%",
+                borderRadius: 20,
+                margin: 3
+              }}>
+                <Text style={{
+                  fontSize: 4.5*vw,
+                  color: 'white'
+                }}>Maerco: {players.players.marco[matchString].home + "-" + players.players.marco[matchString].away}</Text>
+              </View>
+              <View style={{
+              backgroundColor: this.calcColor(match, "donghino", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 3
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Dongue: {players.players.donghino[matchString].home + "-" + players.players.donghino[matchString].away}</Text>
+            </View>
+            <View style={{
+              backgroundColor: this.calcColor(match, "sgaro", matchString),
+              width: "90%",
+              borderRadius: 20,
+              margin: 3
+            }}>
+              <Text style={{
+                fontSize: 4.5*vw,
+                color: 'white'
+              }}>Sgaro: {players.players.sgaro[matchString].home + "-" + players.players.sgaro[matchString].away}</Text>
+            </View>
+            </View>
+          </View>
+        </View>
+      )
+    })
+  }
+
   renderMatches = () => {
     return this.state.data.matches.filter((match) => 
     {
-      return match.stage === "GROUP_STAGE"; 
+      return match.stage === "GROUP_STAGE"  && match.status != "IN_PLAY" && match.status != "PAUSED"; 
     }).sort((m1, m2) => {
-      return m1.status - m2.status
+      return m1.homeTeam.name - m2.homeTeam.name
     }).map((match) => 
     {
       var temp = match.homeTeam.name + "-" + match.awayTeam.name
@@ -356,6 +523,7 @@ export default class App extends React.Component {
             }}>Classifica</Text>
             {this.renderTable()}
           </View>
+          {this.renderInPlay()}
           {this.renderMatches()}
         </View>
       );
@@ -392,6 +560,26 @@ const styles = StyleSheet.create({
   matchBox: {
     width: 80*vw,
     backgroundColor: '#fff',
+    alignItems: 'center',
+    padding: 10,
+    margin: 15,
+    justifyContent: 'flex-start',
+    borderRadius: 10,
+    justifyContent: 'center',
+    textAlign: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    
+    elevation: 10,
+  },
+  matchBoxInPlay: {
+    width: 80*vw,
+    backgroundColor: '#ffa500',
     alignItems: 'center',
     padding: 10,
     margin: 15,
