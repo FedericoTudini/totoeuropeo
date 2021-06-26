@@ -69,7 +69,23 @@ export default class App extends React.Component {
       {"sgaro":0},
       {"fra":0},
     ]
-    //Ottavi
+    //Ottavi e Quarti
+
+    //Squadre ai quarti
+    const qualifiedQuarter = []
+    this.state.data.matches.filter((match) => 
+    {
+      return match.stage === "QUARTER_FINAL"; 
+    }).map((mt) => {
+      if (mt.homeTeam.name)
+      {
+        qualifiedQuarter.push(mt.homeTeam.name)
+      }
+      if (mt.awayTeam.name)
+      {
+        qualifiedQuarter.push(mt.awayTeam.name)
+      }
+    })
     this.state.names.map((player) => {
       var obje = listPlayers.find((obj) => Object.keys(obj)[0] === player)
       finalTable.finalTable[player]["ottavi"].map((team) => {
@@ -108,9 +124,13 @@ export default class App extends React.Component {
         obje[player] += 5
       if (finalTable.finalTable[player]["F"][1] === result.result.risultati["F"][1])
         obje[player] += 5
-      
 
+      finalTable.finalTable[player]["quarti"].map((team) => {
+        if (qualifiedQuarter.includes(team))
+          obje[player] += 10
+      })
     })
+    
     this.state.data.matches.filter((match) => 
     {
       return match.stage === "GROUP_STAGE"; 
