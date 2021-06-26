@@ -230,6 +230,28 @@ const finalTable = {
         "seconda" : "England"
 
     },
+    "sgaro": {
+        "A" : ["Italy", "Turkey"],
+        "B" : ["Belgium", "Russia"],
+        "C" : ["Netherlands", "Ukraine"],
+        "D" : ["England", "Croatia"],
+        "E" : ["Poland","Spain"],
+        "F" : ["France", "Germany"],
+        "terze" : ["Portugal", "Denmark", "Scotland", "Slovakia"],
+        "ottavi" :
+            ["Italy", "Turkey",
+            "Belgium", "Russia",
+            "Netherlands",
+            "Ukraine",
+            "England", "Croatia",
+            "Poland","Spain",
+            "France", "Germany",
+            "Portugal", "Denmark", "Scotland", "Slovakia"],
+        "quarti" : ["Italy", "Croatia", "France", "Portugal", "Germany", "Turkey", "Poland", "Netherlands"],
+        "semi" : ["Italy", "Netherlands", "France", "Germany"],
+        "prima" : "France",
+        "seconda" : "Germany"
+    },
 
 }
 
