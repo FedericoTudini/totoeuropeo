@@ -189,6 +189,47 @@ const finalTable = {
         "seconda" : "France"
 
     },
+    "donghino": {
+
+        "A" : ["Italy", "Turkey"],
+
+        "B" : ["Belgium", "Denmark"],
+
+        "C" : ["Netherlands", "Austria"],
+
+        "D" : ["England", "Croatia"],
+
+        "E" : ["Spain","Poland"],
+
+        "F" : ["France", "Portugal"],
+
+        "terze" : ["Germany", "Russia", "Scotland", "Switzerland"],
+
+        "ottavi" :
+
+            ["Italy", "Turkey",
+
+            "Belgium", "Denmark",
+
+            "Netherlands","Austria",
+
+            "England", "Croatia",
+
+            "Spain", "Poland",
+
+            "France", "Portugal",
+
+            "Germany", "Russia", "Scotland", "Switzerland"],
+
+        "quarti" : ["Croatia", "France", "Italy", "Belgium", "Turkey", "Germany", "England", "Spain"],
+
+        "semi" : ["France", "Italy", "Germany", "England"],
+
+        "prima" : "France",
+
+        "seconda" : "England"
+
+    },
 
 }
 
