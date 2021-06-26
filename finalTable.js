@@ -105,6 +105,50 @@ const finalTable = {
         "prima" : "France",
         "seconda" : "Portugal"
     },
+    "marco": {
+        "A" : ["Italy", "Turkey"],
+        "B" : ["Belgium", "Denmark"],
+        "C" : ["Netherlands","Austria"],
+        "D" : ["England", "Croatia"],
+        "E" : ["Spain","Poland"],
+        "F" : ["France", "Germany"],
+        "terze" : ["Portugal", "Switzerland", "Russia", "Sweden"],
+        "ottavi" :
+            ["Italy", "Turkey",
+            "Belgium", "Denmark",
+            "Netherlands","Austria",
+            "England", "Croatia",
+            "Spain", "Poland",
+            "France", "Germany",
+            "Portugal", "Switzerland", "Russia", "Sweden"],
+        "quarti" : ["Croatia", "Italy", "Germany", "Belgium", "France", "Turkey", "Portugal", "Spain"],
+        "semi" : ["France", "Italy", "Portugal", "Germany"],
+        "prima" : "France",
+        "seconda" : "Germany"
+    },
+    "cataldo": {
+        "A" : ["Italy", "Switzerland"],
+        "B" : ["Belgium", "Denmark"],
+        "C" : ["Netherlands", "Ukraine"],
+        "D" : ["England", "Croatia"],
+        "E" : ["Spain","Sweden"],
+        "F" : ["France", "Germany"],
+        "terze" : ["Portugal", "Poland", "Austria", "Russia"],
+        "ottavi" :
+            ["Italy", "Switzerland",
+            "Belgium", "Denmark",
+            "Netherlands",
+            "Ukraine",
+            "England", "Croatia",
+            "Spain", "Sweden",
+            "France", "Germany",
+            "Portugal", "Poland", "Austria", "Russia"],
+        "quarti" : ["Croatia", "Italy", "England", "Belgium", "France", "Spain", "Denmark", "Poland"],
+        "semi" : ["France", "Italy", "Denmark", "England"],
+        "prima" : "France",
+        "seconda" : "England"
+    },
+
 
 }
 
