@@ -148,7 +148,47 @@ const finalTable = {
         "prima" : "France",
         "seconda" : "England"
     },
+    "fra": {
 
+        "A" : ["Italy", "Turkey"],
+
+        "B" : ["Belgium", "Denmark"],
+
+        "C" : ["Netherlands", "Ukraine"],
+
+        "D" : ["England", "Croatia"],
+
+        "E" : ["Spain","Poland"],
+
+        "F" : ["France", "Portugal"],
+
+        "terze" : ["Germany", "Sweden", "Russia", "Scotland"],
+
+        "ottavi" :
+
+            ["Italy", "Turkey",
+
+            "Belgium", "Denmark",
+
+            "Netherlands","Ukraine",
+
+            "England", "Croatia",
+
+            "Spain", "Poland",
+
+            "France", "Portugal",
+
+            "Germany", "Sweden", "Russia", "Scotland"],
+
+        "quarti" : ["Poland", "Italy", "Denmark", "Belgium", "France", "England", "Netherlands", "Spain"],
+
+        "semi" : ["France", "Belgium", "Netherlands", "England"],
+
+        "prima" : "England",
+
+        "seconda" : "France"
+
+    },
 
 }
 

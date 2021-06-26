@@ -12,7 +12,7 @@ export default class Cards extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            names: ["fede", "gaid", "marine", "nicola", "lollo", "marco", "cataldo"]
+            names: ["fede", "gaid", "marine", "nicola", "lollo", "marco", "cataldo", "fra"]
         }
     }
 
