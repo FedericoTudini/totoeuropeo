@@ -16,7 +16,7 @@ export default class App extends React.Component {
     this.state = {
       endLoading: false,
       data: {},
-      names: ["fede", "gaid", "marine", "nicola", "lollo", "marco", "cataldo", "fra", "donghino"]
+      names: ["fede", "gaid", "marine", "nicola", "lollo", "marco", "cataldo", "fra", "donghino", "sgaro"]
     }
   }
 
