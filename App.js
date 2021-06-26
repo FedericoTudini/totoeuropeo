@@ -194,7 +194,26 @@ export default class App extends React.Component {
       var matchString = temp.replace(/\s/g, '')
       var hour = parseInt(match.startDateTime.toString().substring(11,13)) + 2
       return (
-        <View key={match.homeTeam.name + " " + match.awayTeam.name} style={styles.matchBoxInPlay}>
+        <View key={match.homeTeam.name + " " + match.awayTeam.name} style={{
+          width: 80*vw,
+          backgroundColor: match.status === "IN_PLAY" || match.status === "PAUSED" ? '#ffa500' : "#ffffff",
+          alignItems: 'center',
+          padding: 10,
+          margin: 15,
+          justifyContent: 'flex-start',
+          borderRadius: 10,
+          justifyContent: 'center',
+          textAlign: 'center',
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 5,
+          },
+          shadowOpacity: 0.34,
+          shadowRadius: 6.27,
+          
+          elevation: 10,
+        }}>
           <View>
             <Text>{match.status}</Text>
           </View>
