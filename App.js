@@ -61,8 +61,8 @@ export default class App extends React.Component {
       {"fede": 0},
       {"gaid":0},
       {"cataldo":0},
-      {"nicola":0},
-      {"lollo":0},
+      {"nicola":15},
+      {"lollo":15},
       {"marine":0},
       {"donghino":0},
       {"marco":0},
@@ -73,6 +73,7 @@ export default class App extends React.Component {
 
     //Squadre ai quarti
     const qualifiedQuarter = []
+    const qualifiedSemi = []
     this.state.data.matches.filter((match) => 
     {
       return match.stage === "QUARTER_FINAL"; 
@@ -86,6 +87,20 @@ export default class App extends React.Component {
         qualifiedQuarter.push(mt.awayTeam.name)
       }
     })
+    this.state.data.matches.filter((match) => 
+    {
+      return match.stage === "SEMI_FINAL"; 
+    }).map((mt) => {
+      if (mt.homeTeam.name)
+      {
+        qualifiedSemi.push(mt.homeTeam.name)
+      }
+      if (mt.awayTeam.name)
+      {
+        qualifiedSemi.push(mt.awayTeam.name)
+      }
+    })
+    console.log(qualifiedSemi)
     this.state.names.map((player) => {
       var obje = listPlayers.find((obj) => Object.keys(obj)[0] === player)
       finalTable.finalTable[player]["ottavi"].map((team) => {
@@ -128,6 +143,10 @@ export default class App extends React.Component {
       finalTable.finalTable[player]["quarti"].map((team) => {
         if (qualifiedQuarter.includes(team))
           obje[player] += 10
+      })
+      finalTable.finalTable[player]["semi"].map((team) => {
+        if (qualifiedSemi.includes(team))
+          obje[player] += 15
       })
     })
     
@@ -185,7 +204,7 @@ export default class App extends React.Component {
   renderLast16 = () => {
     return this.state.data.matches.filter((match) => 
     {
-      return match.stage === "LAST_16"; 
+      return match.stage === "SEMI_FINAL"; 
     }).sort((m1, m2) => {
       return m1.homeTeam.name - m2.homeTeam.name
     }).map((match) => 
